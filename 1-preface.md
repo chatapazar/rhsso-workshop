@@ -1,3 +1,5 @@
+# Preface
+
 ## What is Red Hat SSO / keycloak
 
 Red Hat Single Sign-On (RH-SSO) is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0. The RH-SSO server can act as a SAML or OpenID Connect-based Identity Provider, mediating with your enterprise user directory or 3rd-party SSO provider for identity information and your applications via standards-based tokens.
@@ -54,3 +56,6 @@ If you’ve enabled social login or identity brokering users can also link their
 RH-SSO is based on standard protocols and provides support for OpenID Connect, OAuth 2.0, and SAML. Authorization Services
 
 If role based authorization doesn’t cover your needs, RH-SSO provides fine-grained authorization services as well. This allows you to manage permissions for all your services from the RH-SSO admin console and gives you the power to define exactly the policies you need.
+
+## Next Step
+- [Setting up](2-settingup.md)

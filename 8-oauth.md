@@ -94,6 +94,14 @@ Now that we have users in Red Hat SSO as well as loading users from LDAP let’s
   
   ![](images/sss-115.png)
 
+  ![](images/sso-116.png)
+
+  ![](images/sso-117.png)
+
+  ![](images/sso-118.png)
+
+  ![](images/sso-119.png)
+
 - Notice how it automatically knows your name and also has your avatar.
 - If your email address for the registered SSO user is the same as your github account, your avatar will not be updated.
 - This is by design, since the SSO user takes priority if the attributes are the same. This also means if we had multiple identity providers with the same atrributes, SSO would always be updating that property rigorously.

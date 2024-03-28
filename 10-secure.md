@@ -157,10 +157,10 @@ To create our Book entity we are going to use Panache. Hibernate ORM is the de f
 Before we start to deploy our application we also need to deploy that database to the OpenShift cluster so that are code and reference it and store values into it.
 
 - open terminal in OpenShift Dev Spaces
-- check project and go to project path
+- check project and go to project path (change userX to your username)
   
   ```ssh
-  oc project user1-keycloak 
+  oc project userX-keycloak 
   cd /projects/keycloak-workshop-labs
   cd crud-oidc/
   ```
@@ -248,23 +248,23 @@ Perfect! now we have our database deployed. Lets also deploy the application. Fo
 
 - This should render an output with JSON output with details of books. You can hit the same URL in your browser and it should just render the JSON itself.
 
-- Lets add try to do a couple more operations to the
+- Lets add try to do a couple more operations to the (change userX to your username)
 
   ```ssh
   # Gets all books
-  curl -X GET http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books
+  curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books
 
   # Get one book
-  curl -X GET http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6
+  curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6
 
   # Delete a book
-  curl -X DELETE http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6
+  curl -X DELETE http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6
 
   # Create a new book
-  curl -X POST -H 'Content-Type: application/json' http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -d @temp.json
+  curl -X POST -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -d @temp.json
 
   # Update a book
-  curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-7 -d @temp.json
+  curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-7 -d @temp.json
   ```
 
   example result
@@ -305,7 +305,7 @@ Perfect! Now we are at a point that we need to configure our backend service to 
 - add below properties 
   
 ```prop
-quarkus.oidc.auth-server-url=https://sso-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus 
+quarkus.oidc.auth-server-url=https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus 
 quarkus.oidc.client-id=backend-service 
 quarkus.oidc.credentials.secret=secret 
 ```
@@ -365,7 +365,7 @@ As a first we need to first authenticate with SSO to ensure we have a valid toke
 
 ```ssh
  export access_token=$(\
-    curl --insecure -X POST https://sso-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
+    curl --insecure -X POST https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=alice&password=alice&grant_type=password' | jq --raw-output '.access_token' \
@@ -376,23 +376,23 @@ example result
 
 ![](images/sso-158.png)
 
-Now lets try to curl our endpoints again but this time with the addition of Authentication: Bearer token. This will add the our authentication token for user alice into our request.
+Now lets try to curl our endpoints again but this time with the addition of Authentication: Bearer token. This will add the our authentication token for user alice into our request. (change userX to your username)
 
 ```ssh
 # Gets all books
-curl -X GET http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -H "Authorization: Bearer "$access_token -v
+curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -H "Authorization: Bearer "$access_token -v
 
 # Get one book
-curl -X GET http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
+curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
 
 # Delete a book
-curl -X DELETE http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
+curl -X DELETE http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
 
 # Create a new book
-curl -X POST -H 'Content-Type: application/json' http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -d @temp.json -H "Authorization: Bearer "$access_token -v
+curl -X POST -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -d @temp.json -H "Authorization: Bearer "$access_token -v
 
 # Update a book
-curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-7 -d @temp.json -H "Authorization: Bearer "$access_token -v
+curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-7 -d @temp.json -H "Authorization: Bearer "$access_token -v
 ```
 
 At this point we have all our end points allowing the role user. But maybe we dont want. What if we want the DELETE, PUT, POST to have a different user role to ensure its only done by a privilaged user. With Quarkus OIDC its possible to do this too. Lets replace our DELETE, POST, PUT @RolesAllowed annotations as follows.
@@ -411,11 +411,11 @@ Now if we try to run our curl requests again, you can notice that it doesnt give
 < set-cookie: ecfc3d849f2c9256ca51a1627576daa1=ebeaf971b02045e11bfa3a065d5d6f57; path=/; HttpOnly
 ```
 
-Try to autheticate again with user admin instead as shown below. The following command will get the token for admin and update the environment variable.
+Try to autheticate again with user admin instead as shown below. The following command will get the token for admin and update the environment variable. (change userX to your username)
 
 ```ssh
  export access_token=$(\
-    curl --insecure -X POST https://sso-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
+    curl --insecure -X POST https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=admin&password=admin&grant_type=password' | jq --raw-output '.access_token' \

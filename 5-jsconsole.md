@@ -171,7 +171,7 @@ In our case we use kc.login(login) which then redirects itself to the RH-SSO ser
   oc get route js-console
   ```
 
-- Fill in the details on the form (e.g. in below screenshot) and press save. Ensure you use protocol 'http://' with your route e.g. 'http://js-console-user1-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com'(An example shown in the following screenshot)
+- Fill in the details on the form (e.g. in below screenshot) and press save. Ensure you use protocol 'http://' with your route e.g. 'http://js-console-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com'(An example shown in the following screenshot)
 
   - Client ID: js-console
   - Client Protocol: openid-connect

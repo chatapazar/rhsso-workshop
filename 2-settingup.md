@@ -16,7 +16,7 @@ You will be using Visual Studio Code (VS Code) based on Red Hat OpenShift Dev Sp
 
 - To get started, Open this link which should take you to the Dev Spaces console and press Log in with OpenShift button:
 
-  - Open OpenShift Dev Space Link : [openshift dev space](https://devspaces.apps.cluster-29pc5.29pc5.sandbox855.opentlc.com/) 
+  - Open OpenShift Dev Space Link : [openshift dev space](https://devspaces.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/) 
 
   - Click Log in with OpenShift Button
     ![](images/sso-1.png)

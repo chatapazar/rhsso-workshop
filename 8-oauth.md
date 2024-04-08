@@ -55,8 +55,8 @@ Now that we have users in Red Hat SSO as well as loading users from LDAP let’s
 
 - Click Register a new application, Fill in the following values (change userX to your user name):
   - Application name: Keycloak
-  - Homepage URL: http://js-console-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com
-  - Authorization callback URL (copy value from Redirect URI): https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/demojs/broker/github/endpoint
+  - Homepage URL: http://js-console-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com
+  - Authorization callback URL (copy value from Redirect URI): https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth/realms/demojs/broker/github/endpoint
   - Click Register application
 
   ![](images/sso-107.png)

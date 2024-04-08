@@ -103,7 +103,7 @@ With Single Sign-On we expect there will be users logging in, there is integrati
   ![](images/sso-39.png)
 
 - Ensure that you are not logged into the SSO admin panel in the newly opened browser sessions.
-- Link to the console (!!! change userX to your username !!!): https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/demojs/account
+- Link to the console (!!! change userX to your username !!!): https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth/realms/demojs/account
 
   ![](images/sso-40.png)
 

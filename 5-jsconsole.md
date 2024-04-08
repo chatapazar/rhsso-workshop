@@ -97,7 +97,7 @@ In our case we use kc.login(login) which then redirects itself to the RH-SSO ser
   ```javascript
   {
     "realm" : "demojs",
-    "auth-server-url" : "https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth",
+    "auth-server-url" : "https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth",
     "resource" : "js-console"
   }
   ```
@@ -109,7 +109,7 @@ In our case we use kc.login(login) which then redirects itself to the RH-SSO ser
 - Your server URL should be as follows (!!! change userX to your username !!!)
 
   ```javascript
-      <script src="https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/js/keycloak.js"></script>
+      <script src="https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth/js/keycloak.js"></script>
   ```
 
 - Now that you have the basic config in place, lets go ahead and deploy our applicaton. We use the S2i (Source2Image) from OpenShift and create a stream from our project. This has some benefits. If we need to change anything in our app we will just start a new build. Incase you have missed anything, you could easily do the start-build again.
@@ -171,7 +171,7 @@ In our case we use kc.login(login) which then redirects itself to the RH-SSO ser
   oc get route js-console
   ```
 
-- Fill in the details on the form (e.g. in below screenshot) and press save. Ensure you use protocol 'http://' with your route e.g. 'http://js-console-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com'(An example shown in the following screenshot)
+- Fill in the details on the form (e.g. in below screenshot) and press save. Ensure you use protocol 'http://' with your route e.g. 'http://js-console-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com'(An example shown in the following screenshot)
 
   - Client ID: js-console
   - Client Protocol: openid-connect

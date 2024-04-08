@@ -243,7 +243,7 @@ Perfect! now we have our database deployed. Lets also deploy the application. Fo
 - Run the following command in the terminal (change userX to your user name)
 
   ```ssh
-  curl -v -GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books
+  curl -v -GET http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books
   ```
 
 - This should render an output with JSON output with details of books. You can hit the same URL in your browser and it should just render the JSON itself.
@@ -252,19 +252,19 @@ Perfect! now we have our database deployed. Lets also deploy the application. Fo
 
   ```ssh
   # Gets all books
-  curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books
+  curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books
 
   # Get one book
-  curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6
+  curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books/978-0-321-96551-6
 
   # Delete a book
-  curl -X DELETE http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6
+  curl -X DELETE http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books/978-0-321-96551-6
 
   # Create a new book
-  curl -X POST -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -d @temp.json
+  curl -X POST -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books -d @temp.json
 
   # Update a book
-  curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-7 -d @temp.json
+  curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books/978-0-321-96551-7 -d @temp.json
   ```
 
   example result
@@ -279,7 +279,7 @@ Lets start with configuring SSO first.
 
 We will create a new realm by exporing the realm config file. To do that download the [Quarkus-realm](https://raw.githubusercontent.com/RedHat-Middleware-Workshops/keycloak-workshop-labs/main/crud-oidc/src/main/resources/quarkus-realm.json) config file to your own machine.
 
-Login to your SSO instance again (change userX to your username); https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com
+Login to your SSO instance again (change userX to your username); https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com
 
 1. Add a new realm by pressing the Add Realm button on the left side
 
@@ -305,7 +305,7 @@ Perfect! Now we are at a point that we need to configure our backend service to 
 - add below properties 
   
 ```prop
-quarkus.oidc.auth-server-url=https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus 
+quarkus.oidc.auth-server-url=https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth/realms/quarkus 
 quarkus.oidc.client-id=backend-service 
 quarkus.oidc.credentials.secret=secret 
 ```
@@ -365,7 +365,7 @@ As a first we need to first authenticate with SSO to ensure we have a valid toke
 
 ```ssh
  export access_token=$(\
-    curl --insecure -X POST https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
+    curl --insecure -X POST https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=alice&password=alice&grant_type=password' | jq --raw-output '.access_token' \
@@ -380,19 +380,19 @@ Now lets try to curl our endpoints again but this time with the addition of Auth
 
 ```ssh
 # Gets all books
-curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -H "Authorization: Bearer "$access_token -v
+curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books -H "Authorization: Bearer "$access_token -v
 
 # Get one book
-curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
+curl -X GET http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
 
 # Delete a book
-curl -X DELETE http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
+curl -X DELETE http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books/978-0-321-96551-6 -H "Authorization: Bearer "$access_token -v
 
 # Create a new book
-curl -X POST -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books -d @temp.json -H "Authorization: Bearer "$access_token -v
+curl -X POST -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books -d @temp.json -H "Authorization: Bearer "$access_token -v
 
 # Update a book
-curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/books/978-0-321-96551-7 -d @temp.json -H "Authorization: Bearer "$access_token -v
+curl -X PUT -H 'Content-Type: application/json' http://crud-oidc-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/books/978-0-321-96551-7 -d @temp.json -H "Authorization: Bearer "$access_token -v
 ```
 
 At this point we have all our end points allowing the role user. But maybe we dont want. What if we want the DELETE, PUT, POST to have a different user role to ensure its only done by a privilaged user. With Quarkus OIDC its possible to do this too. Lets replace our DELETE, POST, PUT @RolesAllowed annotations as follows.
@@ -415,7 +415,7 @@ Try to autheticate again with user admin instead as shown below. The following c
 
 ```ssh
  export access_token=$(\
-    curl --insecure -X POST https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
+    curl --insecure -X POST https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth/realms/quarkus/protocol/openid-connect/token \
     --user backend-service:secret \
     -H 'content-type: application/x-www-form-urlencoded' \
     -d 'username=admin&password=admin&grant_type=password' | jq --raw-output '.access_token' \

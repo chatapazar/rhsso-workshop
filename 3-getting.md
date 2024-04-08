@@ -82,7 +82,7 @@ Lets first take a look at the installed templates:
 
 - Open the OpenShift console
 
-  click this link to open OpenShift console : [OpenShift Console](https://console-openshift-console.apps.cluster-m5xz7.m5xz7.sandbox2884.opentlc.com/)
+  click this link to open OpenShift console : [OpenShift Console](https://console-openshift-console.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/)
 
   ![](images/sso-11.png)
 

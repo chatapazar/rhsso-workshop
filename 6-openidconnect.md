@@ -122,7 +122,7 @@ So far we’ve assumed the JS Console is an internal trusted application, but wh
   ![](images/sso-83.png)
 - Optional (For Remove consent, !!! You don't have to do it in this workshop.!!!): 
   - Lets say if the user didnt want to consent any longer. They could goto to the accounts page and remove the consent.
-  - Hit the account portal url e.g. <SERVER_URL>/auth/realms/demojs/account e.g. https://sso-userX-keycloak.apps.cluster-gq8kd.gq8kd.sandbox2843.opentlc.com/auth/realms/demojs/account (!!! change userX to your username !!!)
+  - Hit the account portal url e.g. <SERVER_URL>/auth/realms/demojs/account e.g. https://sso-userX-keycloak.apps.cluster-t9pz8.t9pz8.sandbox502.opentlc.com/auth/realms/demojs/account (!!! change userX to your username !!!)
 
     ![](images/sso-81.png)
 
